@@ -1,6 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Portada from "../views/Portada.vue";
+// import Portada from "../views/Portada.vue";
+const Portada = () => import("./../views/Portada.vue");
+const Post = () => import("./../views/Post.vue");
+const Articulo = () => import("./../views/Articulo.vue");
+const SobreMi = () => import("./../views/SobreMi.vue");
+const Contacto = () => import("./../views/Contacto.vue");
+
+
+// Reviso otro método para LazyLoading.
+
+// Con el método import(/* webpackChunkName: "componente" */ "./../views/componente.vue") ya se realiza LazyLoading.
 
 Vue.use(VueRouter);
 
@@ -27,14 +37,16 @@ const routes = [
   {
     path: "/post/:articulo",
     name: "Post",
-    component: () =>
-      import(/* webpackChunkName: "post" */ "./../views/Post.vue"),
+    component: Post,
+    // component: () =>
+    //   import(/* webpackChunkName: "post" */ "./../views/Post.vue"),
     children: [
       {
         path: "/",
         name: "Articulo",
-        component: () =>
-          import(/* webpackChunkName: "post" */ "./../views/Articulo.vue"),
+        component: Articulo,
+        // component: () =>
+        //   import(/* webpackChunkName: "post" */ "./../views/Articulo.vue"),
       },
     ],
   },
@@ -64,7 +76,7 @@ const routes = [
       },
       {
         path: "/administrador/*",
-        name: "Error404",
+        name: "Error404Admin",
         component: () =>
           import(
             /* webpackChunkName: "error404" */ "./../components/Error404.vue"
@@ -75,15 +87,17 @@ const routes = [
   {
     path: "/contacto",
     name: "Contacto",
-    component: () =>
-      import(/* webpackChunkName: "contacto" */ "./../views/Contacto.vue"),
+    component: Contacto,
+    // component: () =>
+    //   import(/* webpackChunkName: "contacto" */ "./../views/Contacto.vue"),
     alias: "/contactame" // Puede ser un array cuando son necesarios más de un alias.
   },
   {
     path: "/sobremi",
     name: "SobreMi",
-    component: () =>
-      import(/* webpackChunkName: "sobremi" */ "./../views/SobreMi.vue"),
+    component: SobreMi,
+    // component: () =>
+    //   import(/* webpackChunkName: "sobremi" */ "./../views/SobreMi.vue"),
     alias: ["/acerca"] // Puede ser un array cuando son necesarios más de un alias.
   },
   {
