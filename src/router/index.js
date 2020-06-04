@@ -18,14 +18,6 @@ const routes = [
     path: "/portada",
     redirect: "/",
   },
-  {
-    path: "/contactame",
-    redirect: "/contacto"
-  },
-  {
-    path: "/acerca",
-    redirect: "/sobremi"
-  },
   /* Redirecciones */
   {
     path: "/",
@@ -85,12 +77,14 @@ const routes = [
     name: "Contacto",
     component: () =>
       import(/* webpackChunkName: "contacto" */ "./../views/Contacto.vue"),
+    alias: "/contactame" // Puede ser un array cuando son necesarios más de un alias.
   },
   {
     path: "/sobremi",
     name: "SobreMi",
     component: () =>
       import(/* webpackChunkName: "sobremi" */ "./../views/SobreMi.vue"),
+    alias: ["/acerca"] // Puede ser un array cuando son necesarios más de un alias.
   },
   {
     path: "*",
