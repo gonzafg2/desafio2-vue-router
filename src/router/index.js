@@ -8,7 +8,7 @@ const SobreMi = () => import("./../views/SobreMi.vue");
 const Contacto = () => import("./../views/Contacto.vue");
 
 
-// Reviso otro método para LazyLoading.
+// Otro método para LazyLoading.
 
 // Con el método import(/* webpackChunkName: "componente" */ "./../views/componente.vue") ya se realiza LazyLoading.
 

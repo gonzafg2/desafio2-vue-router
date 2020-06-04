@@ -6,7 +6,10 @@
       <router-link :to="{name: 'Contacto'}">Contacto</router-link> |
       <router-link :to="{name: 'SobreMi'}">Sobre Mí</router-link>
     </div>
-    <router-view />
+    <transition name="v8-transition">
+      <router-view />
+    </transition>
+
     <Footer />
   </div>
 </template>
@@ -40,5 +43,17 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.v8-transition-enter-active,
+.v8-transition-leave-active {
+  transition: opacity 100ms;
+}
+.v8-transition-enter,
+.v8-transition-leave-to {
+  opacity: 0;
+}
+.v8-transition-enter-to,
+.v8-transition-leave {
+  opacity: 1;
 }
 </style>
